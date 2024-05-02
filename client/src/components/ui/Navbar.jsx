@@ -29,7 +29,6 @@ function BasicExample({ user, logoutHandler }) {
                       <Button onClick={logoutHandler}>Logout</Button>
                     </>
                   )}
-
                 {/* <NavLink style={{ margin: '10px' }} to="/adminpage">Admin</NavLink> */}
               </>
             ) : (
@@ -44,5 +43,4 @@ function BasicExample({ user, logoutHandler }) {
     </Navbar>
   );
 }
-
 export default BasicExample;
