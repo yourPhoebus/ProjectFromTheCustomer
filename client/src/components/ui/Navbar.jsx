@@ -15,14 +15,32 @@ function BasicExample({ user, logoutHandler }) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavLink className="nav-link" to="/">Home</NavLink>
-            <NavLink className="nav-link" to="/user">Личный Кабинет</NavLink>
-            <NavLink className="nav-link" to="/adminpage">Admin</NavLink>
-            <NavLink className="nav-link" to="">Зарегистрироватся</NavLink>
+            { user ? (
+              <>
+                {user.role === 'Admin' ? (
+                  <>
+                    <NavLink className="nav-link" style={{ margin: '10px' }} to="/adminpage">ADMINPAGE</NavLink>
+                    <Button onClick={logoutHandler}>Logout</Button>
+                  </>
+                )
+                  : (
+                    <>
+                      <NavLink className="nav-link" style={{ margin: '10px' }} to="/userpage">Личный Кабинет</NavLink>
+                      <Button onClick={logoutHandler}>Logout</Button>
+                    </>
+                  )}
+                {/* <NavLink style={{ margin: '10px' }} to="/adminpage">Admin</NavLink> */}
+              </>
+            ) : (
+              <>
+                <NavLink className="nav-link" style={{ margin: '10px' }} to="/signup">Зарегистрироватся</NavLink>
+                <NavLink className="nav-link" style={{ margin: '10px' }} to="/login">login</NavLink>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
-
 export default BasicExample;
