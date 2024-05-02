@@ -77,13 +77,13 @@ module.exports = {
     ], {});
 
     await queryInterface.bulkInsert('Comments', [{
-      text: 'ТУТ СУПЕР ДУШНЫЙ КОммент  ОТ ГОСТЯ',
+      text: 'ТУТ СУПЕР ДУШНЫЙ КОммент  ОТ ГОСТЯ о Иван чае',
       user_id: 2,
       tea_id: 1,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
-      text: 'ЭТОТ МОЩНЫЙ КОММЕНТ ОТ АДМИНА',
+      text: 'ЭТОТ МОЩНЫЙ КОММЕНТ ОТ АДМИНА о Иван чае',
       user_id: 1,
       tea_id: 1,
       createdAt: new Date(),
@@ -96,25 +96,25 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
-      text: 'ТУТ коммент от  ГОСТЬ id:3 name:ololo',
+      text: 'ТУТ коммент от  ГОСТЬ id:3 name:ololo о Гринфилд ',
       user_id: 3,
       tea_id: 2,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
-      text: 'ТУТ коммент от  ГОСТЬ id:3 name:ololo',
+      text: 'ТУТ коммент от  ГОСТЬ id:3 name:ololo о Дахун пау',
       user_id: 3,
       tea_id: 3,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
-      text: 'ТУТ коммент от  ГОСТЬ id:3 name:ololo',
+      text: 'ТУТ коммент от  ГОСТЬ id:3 name:ololo о Ройбос',
       user_id: 3,
       tea_id: 4,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
-      text: 'ТУТ коммент от  ГОСТЬ id:3 name:ololo',
+      text: 'ТУТ коммент от  ГОСТЬ id:3 name:ololo о Мудани',
       user_id: 3,
       tea_id: 5,
       createdAt: new Date(),
