@@ -4,8 +4,8 @@ import {
 import React, { useEffect, useState } from 'react';
 import axiosInstance, { setAccessToken } from './axiosInstance';
 import MainPage from './components/pages/MainPage';
-// import TeaPage from "./components/pages/TeaPage";
-// import AdminPage from "./components/pages/AdminPage";
+import TeaPage from "./components/pages/TeaPage";
+import AdminPage from "./components/pages/AdminPage";
 // import UserPage from "./components/pages/UserPage";
 import Root from './components/Root';
 import UserPage from './components/pages/UserPage';
@@ -87,14 +87,14 @@ function App() {
         //   path: '/signup',
         //   element: <SignupPage signupHandler={signupHandler} />,
         // },
-        // {
-        //   path: "/teas/:id",
-        //   element: <TeaPage />,
-        // },
-        // {
-        //   path: "/adminpage",
-        //   element: <AdminPage />,
-        // },
+        {
+          path: "/teas/:id",
+          element: <TeaPage />,
+        },
+        {
+          path: "/adminpage",
+          element: <AdminPage />,
+        },
         // {
         //   path: "/user",
         //   element: <UserPage />,
