@@ -1,17 +1,20 @@
-import React from 'react'
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import React from 'react';
+import {
+  Button, Card, Col, Container, Row,
+} from 'react-bootstrap';
 
-function TeaCard({card}) {
+export default function TeaCard({ tea, deleteHandler }) {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={card.img} />
-      <Card.Body>
-        <Card.Title>{card.name}</Card.Title>
-        <Card.Text>{card.country}</Card.Text>
+    <Card className="mt-3">
+      <Card.Img variant="top" src={tea.img} style={{ maxHeight: 300 }} />
+      <Card.Body style={{ height: 300 }}>
+        <Card.Title>{tea?.name}</Card.Title>
+        <Card.Text>{tea?.sort}</Card.Text>
+        <Card.Text>{tea?.description}</Card.Text>
+        <Card.Text>{tea?.country}</Card.Text>
+        <Button onClick={() => deleteHandler(tea.id)} variant="danger">Удалить</Button>
       </Card.Body>
     </Card>
+
   );
 }
-
-export default TeaCard;
