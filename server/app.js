@@ -6,6 +6,7 @@ const authRouter = require('./routers/auth.router');
 const tokensRouter = require('./routers/tokens.router');
 const APRouter = require('./routers/APRouter');
 const teaRouter = require('./routers/tea.router');
+const userPageRouter = require('./routers/UserPageRouter');
 
 const app = express();		// создаем экземпляр сервера
 
@@ -22,5 +23,6 @@ app.use('/api/messages', messagesRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/tea', APRouter);
 app.use('/api/teas', teaRouter);
+app.use('/api/userpage', userPageRouter);
 
 module.exports = app;	// незабываем выполнить эекспорт для дальнейшего использования
