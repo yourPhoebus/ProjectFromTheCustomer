@@ -4,6 +4,9 @@ import MainPage from './components/pages/MainPage';
 import TeaPage from './components/pages/TeaPage';
 import AdminPage from './components/pages/AdminPage';
 import UserPage from './components/pages/UserPage';
+import LoginPage from './components/pages/LoginPage';
+import SignupPage from './components/pages/SignupPage';
+
 import Root from './components/Root';
 
 function App() {
@@ -27,6 +30,14 @@ function App() {
         {
           path: '/userpage',
           element: <UserPage />,
+        },
+        {
+          path: '/login',
+          element: <LoginPage />,
+        },
+        {
+          path: '/signup',
+          element: <SignupPage />,
         },
       ],
     },
