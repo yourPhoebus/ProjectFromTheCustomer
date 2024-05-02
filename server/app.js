@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const messagesRouter = require('./routers/messages.router');
 const authRouter = require('./routers/auth.router');
 const tokensRouter = require('./routers/tokens.router');
+const APRouter = require('./routers/APRouter');
 const teaRouter = require('./routers/tea.router');
 
 const app = express();		// создаем экземпляр сервера
@@ -19,6 +20,7 @@ app.use(cookieParser());
 app.use('/api/tokens', tokensRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/tea', APRouter);
 app.use('/api/teas', teaRouter);
 
 module.exports = app;	// незабываем выполнить эекспорт для дальнейшего использования
