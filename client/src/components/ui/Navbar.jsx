@@ -14,7 +14,7 @@ function BasicExample({ user, logoutHandler }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink className="nav-link" to="/">Home</NavLink>
+            <NavLink className="nav-link" to="/" style={{ margin: '10px' }}>Home</NavLink>
             { user ? (
               <>
                 {user.role === 'Admin' ? (
@@ -29,7 +29,7 @@ function BasicExample({ user, logoutHandler }) {
                       <Button onClick={logoutHandler}>Logout</Button>
                     </>
                   )}
-                {/* <NavLink style={{ margin: '10px' }} to="/adminpage">Admin</NavLink> */}
+                <NavLink style={{ margin: '10px' }} to="/adminpage">Admin</NavLink>
               </>
             ) : (
               <>
