@@ -3,7 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 export default function LoginPage({ loginHandler }) {
- 
   return (
     <Form onSubmit={loginHandler}>
       <Form.Group className="mb-3">
