@@ -11,6 +11,7 @@ const userPageRouter = require('./routers/UserPageRouter');
 const app = express();		// создаем экземпляр сервера
 
 // Middleware для парсинга тела запроса в формате JSON
+app.use(express.static('public'));
 app.use(express.json());
 // Middleware для логирования запросов
 app.use(morgan('dev'));

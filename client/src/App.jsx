@@ -6,10 +6,7 @@ import AdminPage from './components/pages/AdminPage';
 import UserPage from './components/pages/UserPage';
 import LoginPage from './components/pages/LoginPage';
 import SignupPage from './components/pages/SignupPage';
-
 import Root from './components/Root';
-import LoginPage from './components/pages/LoginPage';
-import SignupPage from './components/pages/SignupPage';
 import axiosInstance, { setAccessToken } from './axiosInstance';
 import ProtectedRoute from './components/hoc/ProtectedRoute';
 

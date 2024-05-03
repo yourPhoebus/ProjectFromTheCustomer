@@ -10,28 +10,39 @@ import TeaCard from '../ui/TeaCard';
 export default function AdminPage() {
   const [show, setShow] = useState(false);
   const [teas, setTeas] = useState([]);
+  const [select, setSelect] = useState(teas);
+
   useEffect(() => {
     fetch('/api/tea')
       .then((res) => res.json())
-      .then((data) => setTeas(data));
+      .then((data) => {
+        setTeas(data);
+        setSelect(data);
+      });
   }, []);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [input, setInput] = useState({
-    sort: '', name: '', description: '', location: '', country: '', img: '',
-  });
-  const inputHandler = (e) => {
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
   const submitHandler = (e) => {
     e.preventDefault();
-    axios.post('/api/tea', input).then((res) => {
+    const formData = new FormData();
+    formData.append('sort', e.target.sort.value);
+    formData.append('name', e.target.name.value);
+    formData.append('description', e.target.description.value);
+    formData.append('location', e.target.location.value);
+    formData.append('country', e.target.country.value);
+    formData.append('file', e.target.file.files[0]);
+    axios.post(
+      '/api/tea',
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    ).then((res) => {
       setTeas((prev) => [res.data, ...prev]);
-      setInput({
-        sort: '', name: '', description: '', location: '', country: '', img: '',
-      });
+      e.target.reset();
     });
   };
 
@@ -43,6 +54,29 @@ export default function AdminPage() {
       console.error('Error deleting card:', error);
     }
   };
+
+  const [selectedCountry, setSelectedCountry] = useState('');
+  const handleCountryChange = (event) => {
+    const country = event.target.value;
+    setSelectedCountry(country);
+  };
+  const encodeCountry = (country) => encodeURI(country);
+
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+      try {
+        if (selectedCountry) {
+          const encodedCountry = encodeCountry(selectedCountry);
+          const { data } = await axios.get(`/api/teas/select?country=${encodedCountry}`);
+          // setSearch(data);
+          setTeas(data);
+        }
+      } catch (error) {
+        console.error('Ошибка при запросе поиска:', error);
+      }
+    };
+  }, [teas, selectedCountry]);
+
   return (
     <>
       <Stack direction="horizontal" gap={3}>
@@ -54,18 +88,32 @@ export default function AdminPage() {
             <Offcanvas.Title>Добавление</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <APForm input={input} submitHandler={submitHandler} inputHandler={inputHandler} />
+            <APForm
+              handleClose={handleClose}
+              submitHandler={submitHandler}
+            />
           </Offcanvas.Body>
         </Offcanvas>
         <div className="p-2 ms-auto">
-          <APSelect />
+          <APSelect
+            handleCountryChange={handleCountryChange}
+            country={select}
+          />
         </div>
       </Stack>
 
       <Row>
-        {teas?.map((tea) => (
-          <Col xs={4}><TeaCard key={tea.id} deleteHandler={deleteHandler} tea={tea} /></Col>
-        ))}
+        {teas
+          ?.filter((el) => (selectedCountry ? el.country === selectedCountry : true))
+          .map((tea) => (
+            <Col xs={4}>
+              <TeaCard
+                key={tea.id}
+                deleteHandler={deleteHandler}
+                tea={tea}
+              />
+            </Col>
+          ))}
       </Row>
     </>
   );
