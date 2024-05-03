@@ -5,6 +5,7 @@ const messagesRouter = require('./routers/messages.router');
 const authRouter = require('./routers/auth.router');
 const tokensRouter = require('./routers/tokens.router');
 const MainPageRouter = require('./routers/MainPage.router');
+const teaRouter = require('./routers/tea.router');
 const app = express();		// создаем экземпляр сервера
 
 // Middleware для парсинга тела запроса в формате JSON
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // app.use()
+app.use('/api/teas', teaRouter);
 app.use('/api', MainPageRouter)
 app.use('/api/tokens', tokensRouter);
 app.use('/api/messages', messagesRouter);

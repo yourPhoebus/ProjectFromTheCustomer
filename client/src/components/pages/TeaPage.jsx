@@ -50,7 +50,7 @@ export default function TeaPage() {
       <ListGroup className="list-group-flush">
         <ListGroup.Item>{tea.sort}</ListGroup.Item>
         <ListGroup.Item>{tea.country}</ListGroup.Item>
-        <ListGroup.Item>{tea.location}</ListGroup.Item>
+        {/* <ListGroup.Item>{tea.location}</ListGroup.Item> */}
         <br />
         {coms.map((el) => (
           <CommentsTea key={el.id} comment={el.text} name={el.User?.name} />
