@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { YMaps, Map } from '@pbe/react-yandex-maps';
-import TeaCard from '../ui/TeaCard';
+import { Col, Row } from 'react-bootstrap';
 import MainMap from '../ui/MainMap';
+import MainCard from '../ui/MainCard';
 
 export default function MainPage() {
   const [cards, setCards] = useState([]);
-
-  // const deleteHandler = (id) => {
-  //   const newPost = await fetch('//')
-  //   if(res.status === 200) {
-  //     // setCards((prev) => prev.filter((el) => el.id !== cardId))
-  //     setCards((prev) => [newPost, ...prev ] )
-  //   }
-  // }
-
   useEffect(() => {
     fetch('/api/')
       .then((res) => res.json())
@@ -22,11 +13,13 @@ export default function MainPage() {
   return (
     <>
       <MainMap cards={cards} />
-      <div>
-        {cards.map((card) => (
-          <TeaCard key={card.id} card={card} />
+      <Row>
+        {cards.map((data) => (
+          <Col xs={4}>
+            <MainCard key={data.id} card={data} />
+          </Col>
         ))}
-      </div>
+      </Row>
 
     </>
   );
